@@ -1,0 +1,183 @@
+body {
+    background-color: #e7c591;
+    font-family: sans;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+header.site-header {
+    max-height: 360px;
+    overflow: clip;
+}
+
+header.site-header > img {
+    width: 100%;
+    margin: 0;
+}
+
+div.navbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+
+div.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+div.channel-search {
+    margin-bottom: 2em;
+}
+
+div.channels-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    justify-content: center;
+    gap: 20px;
+}
+
+div.channel-card {
+    border: black solid 1px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 5px;
+    overflow: clip;
+    text-align: center;
+    width: 240px;
+}
+
+div.channel-card img {
+    border-bottom: black solid 1px;
+}
+
+div.channel-title {
+    align-items: center;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+}
+
+form.videos-search {
+    margin-bottom: 1rem;
+}
+
+div.videos-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(100%, 480px));
+    justify-content: center;
+    gap: 2rem;
+}
+
+div.video-card {
+    border: black solid 1px;
+    background-color: white;
+    border-radius: 10px;
+    /*margin: 5px;*/
+    text-align: left;
+}
+
+div.video-card > iframe {
+    width: min(100%, 480px);
+    aspect-ratio: 16 / 9;
+}
+
+div.video-infos {
+    justify-content: space-between;
+    display: flex;
+    height: 2.5rem;
+    padding: 3px;
+    overflow: clip;
+}
+
+div.single-video {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div.single-video>iframe {
+    width: 95%;
+    aspect-ratio: 16/9;
+    margin: 3rem auto;
+}
+
+div.like {
+    cursor: pointer;
+    color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto; /* don't shrink */
+    font-size: 1.5em;
+    user-select: none; /* avoid text selection on double click */
+}
+
+span.like-count {
+    font-size: 0.5em;
+}
+
+div.like.other {
+    color: pink;
+}
+
+div.like.me {
+    color: red;
+}
+
+div.connection-form, div.registration-form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+}
+
+div.connection-form > div, div.registration-form > div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+div.pagination {
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+
+div.pagination > span {
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    margin: 0 0.2rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+div.pagination span.current form {
+    display: inline;
+    margin: 0;
+}
+
+div.pagination span.current input[type="number"] {
+    width: 3rem;
+    box-sizing: border-box;
+    text-align: center;
+    border: none;
+}
+
+div.no-results {
+    text-align: center;
+    width: 100%;
+}

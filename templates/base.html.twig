@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="/images/favicon.png">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+
+        {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+        {% if frankenphp_hot_reload %}
+            <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
+            <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
+            <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
+        {% endif %}
+        <meta name="turbo-prefetch" content="false">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header class="site-header">
+            <img src="/images/banner_bt.jpg">
+        </header>
+        <div class="navbar">
+            <div class="navigation">
+                <a href="{{ path('app_content_recommended') }}">[Recommendations]</a>
+                <a href="{{ path('app_content_latest') }}">[Actualités]</a>
+                <a href="{{ path('app_content_channels') }}">[Chaînes]</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_user_index') }}">[Admin]</a>
+                {% endif %}
+            </div>
+            <div class="session">
+                {% if app.user %}
+                    {{ app.user.username }}
+                    <a href="{{ path('app_logout') }}">[Logout]</a>
+                {# {% else %}
+                <a href="{{ path('app_login') }}">[Login]</a> #}
+                {# <a href="{{ path('app_register') }}">[Register]</a> #}
+                {% endif %}
+            </div>
+        </div>
+        <div class="main-content">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

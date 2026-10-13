@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+<h2>{{ title }}</h2>
+<form method="get" class="videos-search">
+    <input type="search"
+        name="q"
+        value="{{ app.request.query.get('q') }}"
+        placeholder="Rechercher..."
+    >
+</form>
+{% if pagination is empty %}
+<div class="no-results">
+    No results
+</div>
+{% else %}
+<div class="videos-list">
+    {% for video in pagination %}
+        {% include "components/video-card.html.twig" %}
+    {% endfor %}
+</div>
+{% endif %}
+{{ knp_pagination_render(pagination) }}
+{% endblock %}

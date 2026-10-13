@@ -1,0 +1,10 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Import fichier .csv{% endblock %}
+
+{% block main %}
+    {{ form_start(form) }}
+        {{ form_row(form.channels) }}
+        {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

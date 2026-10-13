@@ -1,0 +1,24 @@
+<div {{ attributes }}>
+    <div class="channel-search">
+        <input
+            type="search"
+            data-model="debounce(300)|query"
+            placeholder="Rechercher..."
+        >
+    </div>
+
+    <div class="channels-list">
+        {% for channel in this.channels %}
+        {% if channel.isActive %}
+            <div class="channel-card">
+                <a href="{{ path('app_content_feed', {'id': channel.id}) }}">
+                    <img src="/images/channels/{{ channel.identifier }}.jpg">
+                </a>
+                <div class="channel-title">{{ channel.title }}</div>
+            </div>
+        {% endif %}
+        {% else %}
+            <p>Aucun résultat.</p>
+        {% endfor %}
+    </div>
+</div>

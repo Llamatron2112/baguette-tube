@@ -1,0 +1,13 @@
+<div
+    {{ attributes.defaults({
+        class: likeClass ? 'like ' ~ likeClass : 'like',
+        role: 'button',
+        tabindex: '0',
+        'data-action': 'click->live#action keydown.enter->live#action keydown.space->live#action',
+        'data-live-action-param': 'toggle',
+        title: this.count > 0 ? 'Recommandé par\n' ~ this.likers : 'Pas encore recommandé',
+    }) }}
+>
+    <span class="like-count">{{ this.count }}</span>
+    <span>♥</span>
+</div>

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div>
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <h2>Connexion</h2>
+            <div class="connection-form">
+                <div>
+                    <label for="username">Email</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                </div>
+                <div>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                </div>
+                <div>
+                    <div>
+                        <input type="checkbox" name="_remember_me" id="_remember_me">
+                        <label for="_remember_me">Rester connecté</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit">Connexion</button>
+            </div>
+            <div>
+                <p><a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a></p>
+            </div>
+            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+        </form>
+    </div>
+{% endblock %}

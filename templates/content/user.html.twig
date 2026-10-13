@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block body %}
+    <h1>{{ user.username }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
