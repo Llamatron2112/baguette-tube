@@ -10,6 +10,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
+use function PHPUnit\Framework\isNull;
 
 #[AsLiveComponent]
 class LikeButton
@@ -56,6 +57,10 @@ class LikeButton
     public function toggle(EntityManagerInterface $em): void
     {
         $user = $this->security->getUser();
+
+        if (isNull($user)) {
+            return;
+        }
 
         if (in_array('ROLE_BOUL', $user->getRoles())) {
             if ($this->video->isLikedBy($user)) {
