@@ -93,8 +93,8 @@ final class ContentController extends AbstractController
         VideoRepository $repository,
         EntityManagerInterface $entityManager,
         PaginatorInterface $paginator,
+        Request $request,
     ): Response {
-        $request = Request::createFromGlobals();
         $page = (int) $request->query->get("p");
         $page = $page == null ? 1 : (int) $page;
 

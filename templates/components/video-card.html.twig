@@ -4,7 +4,7 @@
         <a href="{{ path('app_content_video', {'id': video.id}) }}">
             <div class="video-title" title="Posté le {{ video.date|date('d/m/y à H:i') }} sur {{ video.channel.title }}">{{ video.title }}</div>
         </a>
-        {% if app.user %}
+        {% if app.user or app.request.attributes.get('_route') == 'app_content_recommended' %}
             <twig:LikeButton :video="video"/>
         {% endif %}
     </div>
