@@ -28,6 +28,9 @@ class Video
      * @var Collection<int, User>
      */
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'videos')]
+    #[ORM\JoinTable(name: 'video_user')]
+    #[ORM\JoinColumn(name: 'video_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[ORM\InverseJoinColumn(name: 'user_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
     private Collection $likes;
 
     #[ORM\ManyToOne(inversedBy: 'videos')]
