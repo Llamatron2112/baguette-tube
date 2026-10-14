@@ -58,11 +58,7 @@ class LikeButton
     {
         $user = $this->security->getUser();
 
-        if (isNull($user)) {
-            return;
-        }
-
-        if (in_array('ROLE_BOUL', $user->getRoles())) {
+        if ($user && in_array('ROLE_BOUL', $user->getRoles())) {
             if ($this->video->isLikedBy($user)) {
                 $this->video->removeLike($user);
             } else {
