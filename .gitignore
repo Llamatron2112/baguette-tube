@@ -20,3 +20,4 @@
 ###< symfony/asset-mapper ###
 #
 /public/images/channels/
+/config/secrets/
