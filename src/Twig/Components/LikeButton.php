@@ -62,9 +62,9 @@ class LikeButton
                 $this->video->removeLike($user);
             } else {
                 $this->video->addLike($user);
-                if ( $this->video->getDate() == $this->video->getBumpDate()) {
+                // if ( $this->video->getDate() == $this->video->getBumpDate()) {
                     $this->video->setBumpDate(new DateTimeImmutable);
-                }
+                // }
             }
 
             $em->flush();
