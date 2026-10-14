@@ -57,7 +57,7 @@ class ChannelService
             return $message;
         }
 
-        $existing = $repository->findOneBy(['identifier' => $channelId]);
+        $existing = $repository->findOneBy(["identifier" => $channelId]);
 
         if ($existing != null) {
             $message = "Chaîne déjà dans la base : " . $channelId;
@@ -174,9 +174,13 @@ class ChannelService
             $video->setTitle($videoData->title);
             $video->setChannel($channel);
 
-            $now = new DateTimeImmutable();
-            $video->setDate($now);
-            $video->setBumpDate($now);
+            $ytDateFormat = "Y-m-d\TH:i:sP";
+            $date = DateTimeImmutable::createFromFormat(
+                $ytDateFormat,
+                $videoData->published,
+            );
+            $video->setDate($date);
+            $video->setBumpDate($date);
 
             $this->entityManager->persist($video);
         }
