@@ -23,8 +23,38 @@ header.site-header > img {
 
 div.navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-size: 1.1rem;
+    background-color: #f8dfa9;
+    border-top: black solid 1px;
+}
+
+div.navbar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+div.navbar>div>ul li {
+    background-color: #f8dfa9;
+    padding: 0.1rem 0.2rem;
+}
+
+div.navbar>div.navigation>ul li {
+    margin-left: 0rem;
+    margin-right: 0.5rem;
+}
+
+div.navbar>div.session>ul li {
+    margin-left: 0.5rem;
+    margin-right: 0rem;
+}
+
+div.navbar>div>ul li:hover {
+    background-color: white;
 }
 
 div.main-content {

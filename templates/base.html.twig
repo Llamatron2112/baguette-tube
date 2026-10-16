@@ -26,20 +26,20 @@
         </header>
         <div class="navbar">
             <div class="navigation">
-                <a href="{{ path('app_content_recommended') }}">[Recommendations]</a>
-                <a href="{{ path('app_content_latest') }}">[Actualités]</a>
-                <a href="{{ path('app_content_channels') }}">[Chaînes]</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_user_index') }}">[Admin]</a>
-                {% endif %}
+                <ul>
+                    <a href="{{ path('app_content_recommended') }}"><li>Recommandés</li></a>
+                    <a href="{{ path('app_content_latest') }}"><li>Actualités</li></a>
+                    <a href="{{ path('app_content_channels') }}"><li>Chaînes</li></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_user_index') }}"><li>Admin</li></a>
+                    {% endif %}
+                </ul>
             </div>
             <div class="session">
                 {% if app.user %}
-                    {{ app.user.username }}
-                    <a href="{{ path('app_logout') }}">[Logout]</a>
-                {# {% else %}
-                <a href="{{ path('app_login') }}">[Login]</a> #}
-                {# <a href="{{ path('app_register') }}">[Register]</a> #}
+                <ul>
+                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                </ul>
                 {% endif %}
             </div>
         </div>
