@@ -21,9 +21,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <header class="site-header">
-            <img src="/images/banner_bt.jpg">
-        </header>
+        <a href="/">
+            <header class="site-header">
+                    <img src="/images/banner_bt.jpg">
+            </header>
+        </a>
         <div class="navbar">
             <div class="navigation">
                 <ul>
@@ -36,11 +38,13 @@
                 </ul>
             </div>
             <div class="session">
-                {% if app.user %}
                 <ul>
-                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-                </ul>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}">{{ app.user.username }} (Logout)</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_login') }}">Login</a></li>
                 {% endif %}
+                </ul>
             </div>
         </div>
         <div class="main-content">
