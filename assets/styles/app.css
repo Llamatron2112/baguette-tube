@@ -13,6 +13,7 @@ a {
 
 header.site-header {
     max-height: 360px;
+    position: relative;
     overflow: clip;
 }
 
@@ -21,12 +22,28 @@ header.site-header > img {
     margin: 0;
 }
 
+header.site-header > div {
+    position: absolute;
+    top: 0px;
+    text-align: right;
+    width: 100%;
+}
+
+header.site-header > div > p {
+    margin: auto;
+}
+
+header.site-header > div > h1 {
+    margin: auto;
+}
+
+
 div.navbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 1.1rem;
-    background-color: #f8dfa9;
+    background-color: #f9e0a6;
     border-top: black solid 1px;
 }
 
