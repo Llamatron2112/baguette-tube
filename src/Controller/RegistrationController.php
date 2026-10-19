@@ -52,11 +52,11 @@ class RegistrationController extends AbstractController
                 new TemplatedEmail()
                     ->from(new Address($_ENV["EMAIL_FROM"], "Baguette Tube"))
                     ->to((string) $user->getEmail())
-                    ->subject("Please Confirm your Email")
+                    ->subject("Confirmez votre email")
                     ->htmlTemplate("registration/confirmation_email.html.twig"),
             );
 
-            return $this->redirect("app_verify_email_sent");
+            return $this->redirectToRoute("app_verify_email_sent");
         }
 
         return $this->render("registration/register.html.twig", [
