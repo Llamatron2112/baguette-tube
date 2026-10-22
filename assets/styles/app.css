@@ -114,6 +114,10 @@ div.channel-title {
     justify-content: center;
 }
 
+div.channel-infos {
+    margin: 2rem auto;
+}
+
 form.videos-search {
     margin-bottom: 1rem;
 }

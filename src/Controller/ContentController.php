@@ -55,9 +55,9 @@ final class ContentController extends AbstractController
             12,
         );
 
-        return $this->render("content/videos-list.html.twig", [
-            "title" => "Vidéos de " . $channel->getName(),
+        return $this->render("content/channel.html.twig", [
             "pagination" => $pagination,
+            "channel" => $channel,
         ]);
     }
 

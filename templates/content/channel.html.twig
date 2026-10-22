@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ channel.title }}
+{% endblock %}
+
+{% block body %}
+<h2>{{ channel.title }}</h2>
+<div class="channel-infos">
+    <a href="https://www.youtube.com/channel/{{ channel.identifier }}" target="_blank">
+        <img src="/images/channels/{{ channel.identifier }}.jpg" alt="{{ channel.title }}">
+    </a>
+    {% if channel.supportlinks %}
+        <h3>Supporter la chaîne</h3>
+        {% for link in channel.supportlinks %}
+            <div>
+                <a href="{{ link }}" target="_blank">{{ link }}</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<div>
+    <form method="get" class="videos-search">
+        <input type="search"
+            name="q"
+            value="{{ app.request.query.get('q') }}"
+            placeholder="Rechercher..."
+        >
+    </form>
+</div>
+{% if pagination is empty %}
+<div class="no-results">
+    No results
+</div>
+{% else %}
+<div class="videos-list">
+    {% for video in pagination %}
+        {% include "components/video-card.html.twig" %}
+    {% endfor %}
+</div>
+{% endif %}
+{{ knp_pagination_render(pagination) }}
+{% endblock %}

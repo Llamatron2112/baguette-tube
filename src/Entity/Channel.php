@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ChannelRepository::class)]
 class Channel
@@ -48,6 +49,13 @@ class Channel
 
     #[ORM\Column]
     private ?bool $isActive = null;
+
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    #[Assert\All([
+        new Assert\Url(),
+        new Assert\NotBlank()
+    ])]
+    private ?array $supportLinks = null;
 
     public function __construct()
     {
@@ -185,6 +193,18 @@ class Channel
     public function setIsActive(bool $isActive): static
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getSupportLinks(): ?array
+    {
+        return $this->supportLinks;
+    }
+
+    public function setSupportLinks(?array $supportLinks): static
+    {
+        $this->supportLinks = $supportLinks;
 
         return $this;
     }

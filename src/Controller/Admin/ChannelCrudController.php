@@ -11,7 +11,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -19,6 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Google;
+use Symfony\Component\Uid\Uuid;
 use function PHPUnit\Framework\isNull;
 /**
  * @extends AbstractCrudController<Channel>
@@ -31,6 +39,23 @@ class ChannelCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Channel::class;
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id')->hideOnForm(),
+            TextField::new('name'),
+            TextField::new('identifier'),
+            TextField::new('title'),
+            CollectionField::new('supportLinks')
+                ->setEntryType(UrlType::class)
+                ->allowAdd()
+                ->allowDelete(),
+            DateTimeField::new('updatedAt'),
+            TextareaField::new('errorStatus'),
+            BooleanField::new('isActive'),
+        ];
     }
 
     public function configureActions(Actions $actions): Actions
