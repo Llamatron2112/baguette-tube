@@ -10,8 +10,13 @@
     <a href="https://www.youtube.com/channel/{{ channel.identifier }}" target="_blank">
         <img src="/images/channels/{{ channel.identifier }}.jpg" alt="{{ channel.title }}">
     </a>
+    <p>
+        <a href="https://www.youtube.com/channel/{{ channel.identifier }}" target="_blank">
+            Sur YouTube
+        </a>
+    </p>
     {% if channel.supportlinks %}
-        <h3>Supporter la chaîne</h3>
+        <h3>Soutenir financierement ce média</h3>
         {% for link in channel.supportlinks %}
             <div>
                 <a href="{{ link }}" target="_blank">{{ link }}</a>
