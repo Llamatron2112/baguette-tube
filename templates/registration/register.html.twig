@@ -20,4 +20,5 @@
             <button type="submit" class="btn">Inscription</button>
         </div>
     {{ form_end(registrationForm) }}
+    <p><a href="{{ path('app_resend_verification_email') }}">Lien expiré ? Renvoyer l'email de vérification</a></p>
 {% endblock %}

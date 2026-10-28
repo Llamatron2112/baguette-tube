@@ -55,10 +55,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+    #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $verificationRequestedAt = null;
+
     public function __construct()
     {
         $this->videos = new ArrayCollection();
         $this->channels = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?Uuid
@@ -218,6 +225,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getVerificationRequestedAt(): ?\DateTimeImmutable
+    {
+        return $this->verificationRequestedAt;
+    }
+
+    public function setVerificationRequestedAt(?\DateTimeImmutable $verificationRequestedAt): static
+    {
+        $this->verificationRequestedAt = $verificationRequestedAt;
 
         return $this;
     }

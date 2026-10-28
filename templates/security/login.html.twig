@@ -38,6 +38,7 @@
             <div>
                 <p><a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a></p>
                 <p><a href="{{ path('app_register') }}">Pas encore de compte ?</a></p>
+                <p><a href="{{ path('app_resend_verification_email') }}">Email non vérifié ? Renvoyer l'email de confirmation</a></p>
             </div>
             <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
         </form>

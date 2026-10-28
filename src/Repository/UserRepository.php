@@ -33,6 +33,18 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
+    public function deleteUnverifiedBefore(\DateTimeImmutable $before): int
+    {
+        return (int) $this->createQueryBuilder('u')
+            ->delete()
+            ->where('u.isVerified = :verified')
+            ->andWhere('COALESCE(u.verificationRequestedAt, u.createdAt) < :before')
+            ->setParameter('verified', false)
+            ->setParameter('before', $before)
+            ->getQuery()
+            ->execute();
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

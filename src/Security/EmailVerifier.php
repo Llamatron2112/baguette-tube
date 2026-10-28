@@ -36,6 +36,9 @@ class EmailVerifier
         $email->context($context);
 
         $this->mailer->send($email);
+
+        $user->setVerificationRequestedAt(new \DateTimeImmutable());
+        $this->entityManager->flush();
     }
 
     /**

@@ -24,6 +24,7 @@ class UserCrudController extends AbstractCrudController
             'email',
             'roles',
             'isVerified',
+            'createdAt',
         ];
     }
 }

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Renvoyer l'email de vérification{% endblock %}
+
+{% block body %}
+    <h1>Renvoyer l'email de vérification</h1>
+
+    <p>
+        Saisissez l'adresse email utilisée lors de l'inscription.
+        Si un compte non vérifié existe, un nouvel email sera envoyé.
+    </p>
+
+    {{ form_start(resendForm) }}
+        {{ form_row(resendForm.email) }}
+        <button type="submit" class="btn">Renvoyer l'email</button>
+    {{ form_end(resendForm) }}
+
+    <p><a href="{{ path('app_login') }}">Retour à la connexion</a></p>
+{% endblock %}

@@ -17,6 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use App\Form\ResendVerificationEmailType;
 
 class RegistrationController extends AbstractController
 {
@@ -46,15 +47,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation(
-                "app_verify_email",
-                $user,
-                new TemplatedEmail()
-                    ->from(new Address($_ENV["EMAIL_FROM"], "Baguette Tube"))
-                    ->to((string) $user->getEmail())
-                    ->subject("Confirmez votre email")
-                    ->htmlTemplate("registration/confirmation_email.html.twig"),
-            );
+            $this->sendVerificationEmail($user);
 
             return $this->redirectToRoute("app_verify_email_sent");
         }
@@ -108,5 +101,46 @@ class RegistrationController extends AbstractController
     public function verifyUserEmailSent(): Response
     {
         return $this->render("registration/email_sent.html.twig");
+    }
+
+    private function sendVerificationEmail(User $user): void
+    {
+        $this->emailVerifier->sendEmailConfirmation(
+            "app_verify_email",
+            $user,
+            (new TemplatedEmail())
+                ->from(new Address($_ENV["EMAIL_FROM"], "Baguette Tube"))
+                ->to((string) $user->getEmail())
+                ->subject("Confirmez votre email")
+                ->htmlTemplate("registration/confirmation_email.html.twig"),
+        );
+    }
+
+    #[Route("/verify/email/resend", name: "app_resend_verification_email", methods: ["GET", "POST"])]
+    public function resendVerificationEmail(
+        Request $request,
+        UserRepository $userRepository,
+    ): Response {
+        $form = $this->createForm(ResendVerificationEmailType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $email = trim((string) $form->get("email")->getData());
+            $user = $userRepository->findOneBy(["email" => $email]);
+
+            if (null !== $user && !$user->isVerified()) {
+                $lastRequest = $user->getVerificationRequestedAt();
+
+                if (null === $lastRequest || $lastRequest <= new \DateTimeImmutable("-5 minutes")) {
+                    $this->sendVerificationEmail($user);
+                }
+            }
+
+            return $this->redirectToRoute("app_verify_email_sent");
+        }
+
+        return $this->render("registration/resend_verification_email.html.twig", [
+            "resendForm" => $form,
+        ]);
     }
 }

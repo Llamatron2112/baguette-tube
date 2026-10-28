@@ -6,7 +6,7 @@ use App\Repository\ChannelRepository;
 use App\Services\ChannelService;
 use Symfony\Component\Scheduler\Attribute\AsPeriodicTask;
 
-#[AsPeriodicTask(frequency: 5)]
+#[AsPeriodicTask(frequency: 5, transports: 'async')]
 class UpdateChannel
 {
     public function __construct(readonly private ChannelRepository $repository, readonly private ChannelService $service)
