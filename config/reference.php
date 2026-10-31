@@ -1527,6 +1527,20 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     convert_exception?: bool|Param, // Default: false
  *     remove_first_page_param?: bool|Param, // Default: false
  * }
+ * @psalm-type TelegramBotConfig = array{
+ *     api_token?: scalar|Param|null, // Telegram Bot API token
+ *     api_server?: scalar|Param|null, // Telegram Bot API server // Default: "https://api.telegram.org"
+ *     allowed_updates?: list<scalar|Param|null>,
+ *     http_client?: scalar|Param|null, // PSR-18 http client service id // Default: "psr18.http_client"
+ *     request_factory?: scalar|Param|null, // PSR-7 request factory service id // Default: "psr18.http_client"
+ *     stream_factory?: scalar|Param|null, // PSR-7 stream factory service id // Default: "psr18.http_client"
+ *     webhook?: array{ // Webhook options
+ *         url?: scalar|Param|null, // HTTPS URL to which Telegram will send updates // Default: null
+ *         max_connections?: int|Param, // Maximum number of simultaneous HTTPS connections allowed for the webhook (1–100) // Default: 40
+ *         secret_token?: scalar|Param|null, // Secret token to protect webhook url from unauthorized requests // Default: null
+ *         certificate?: scalar|Param|null, // Path to a public key certificate for verifying a self-signed HTTPS certificate // Default: null
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1545,6 +1559,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     twig_component?: TwigComponentConfig,
  *     live_component?: LiveComponentConfig,
  *     knp_paginator?: KnpPaginatorConfig,
+ *     telegram_bot?: TelegramBotConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1566,6 +1581,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         twig_component?: TwigComponentConfig,
  *         live_component?: LiveComponentConfig,
  *         knp_paginator?: KnpPaginatorConfig,
+ *         telegram_bot?: TelegramBotConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1585,6 +1601,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         twig_component?: TwigComponentConfig,
  *         live_component?: LiveComponentConfig,
  *         knp_paginator?: KnpPaginatorConfig,
+ *         telegram_bot?: TelegramBotConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1605,6 +1622,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         twig_component?: TwigComponentConfig,
  *         live_component?: LiveComponentConfig,
  *         knp_paginator?: KnpPaginatorConfig,
+ *         telegram_bot?: TelegramBotConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

@@ -62,6 +62,18 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v6.11.0"
     },
+    "luzrain/telegram-bot-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.1",
+            "ref": "890538c3e818619e5c0ab76fa833a39268c8ab36"
+        },
+        "files": [
+            "config/packages/telegram_bot.yaml"
+        ]
+    },
     "php-http/discovery": {
         "version": "1.20",
         "recipe": {

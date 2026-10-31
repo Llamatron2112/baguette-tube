@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "700b1549e26f6d152f0b5025e3e2ad0b",
+    "content-hash": "50388476b3c233723991b05dc1e9c163",
     "packages": [
         {
             "name": "composer/semver",
@@ -2132,6 +2132,127 @@
             "time": "2026-09-11T08:30:00+00:00"
         },
         {
+            "name": "luzrain/telegram-bot-api",
+            "version": "v3.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luzrain/telegram-bot-api.git",
+                "reference": "d6f3c0b9f39958609be42d1c6cc7b775c591f2c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luzrain/telegram-bot-api/zipball/d6f3c0b9f39958609be42d1c6cc7b775c591f2c1",
+                "reference": "d6f3c0b9f39958609be42d1c6cc7b775c591f2c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.89.1",
+                "phpunit/phpunit": "^10.5.58",
+                "vimeo/psalm": "^6.13.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Luzrain\\TelegramBotApi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Zenkov",
+                    "email": "anton.z@live.com",
+                    "homepage": "https://github.com/luzrain",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ilya Gusev",
+                    "email": "mail@igusev.ru",
+                    "homepage": "https://php-cat.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Wrapper for Telegram Bot API",
+            "homepage": "https://github.com/luzrain/TelegramBotApi",
+            "keywords": [
+                "bot",
+                "bot api",
+                "telegram",
+                "telegram bot",
+                "telegram bot api"
+            ],
+            "support": {
+                "issues": "https://github.com/luzrain/telegram-bot-api/issues",
+                "source": "https://github.com/luzrain/telegram-bot-api/tree/v3.18.0"
+            },
+            "time": "2026-09-27T13:27:05+00:00"
+        },
+        {
+            "name": "luzrain/telegram-bot-bundle",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luzrain/telegram-bot-bundle.git",
+                "reference": "dbbef2b15dd81e0d4e03524b0970b0f044d51f83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luzrain/telegram-bot-bundle/zipball/dbbef2b15dd81e0d4e03524b0970b0f044d51f83",
+                "reference": "dbbef2b15dd81e0d4e03524b0970b0f044d51f83",
+                "shasum": ""
+            },
+            "require": {
+                "luzrain/telegram-bot-api": "^3.11.0",
+                "php": ">=8.2",
+                "symfony/config": "^7.0|^8.0",
+                "symfony/console": "^7.0|^8.0",
+                "symfony/dependency-injection": "^7.0|^8.0",
+                "symfony/http-kernel": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.89.1",
+                "phpunit/phpunit": "^10.5.58",
+                "symfony/framework-bundle": "^7.3.6",
+                "vimeo/psalm": "^6.13.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Luzrain\\TelegramBotBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Zenkov",
+                    "email": "anton.z@live.com"
+                }
+            ],
+            "description": "Symfony bundle for Telegram Bot API",
+            "homepage": "https://github.com/luzrain/telegram-bot-bundle",
+            "keywords": [
+                "Telegram-Bot-API",
+                "telegram",
+                "telegram-bot",
+                "telegram-bundle"
+            ],
+            "support": {
+                "issues": "https://github.com/luzrain/telegram-bot-bundle/issues",
+                "source": "https://github.com/luzrain/telegram-bot-bundle/tree/v2.3.0"
+            },
+            "time": "2026-01-28T13:42:30+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.12.1",
             "source": {
@@ -2235,6 +2356,84 @@
                 }
             ],
             "time": "2026-09-29T19:21:12+00:00"
+        },
+        {
+            "name": "nyholm/psr7",
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nyholm/psr7.git",
+                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
+                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0"
+            },
+            "provide": {
+                "php-http/message-factory-implementation": "1.0",
+                "psr/http-factory-implementation": "1.0",
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "http-interop/http-factory-tests": "^0.9",
+                "php-http/message-factory": "^1.0",
+                "php-http/psr7-integration-tests": "^1.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.4",
+                "symfony/error-handler": "^4.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nyholm\\Psr7\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                },
+                {
+                    "name": "Martijn van der Ven",
+                    "email": "martijn@vanderven.se"
+                }
+            ],
+            "description": "A fast PHP7 implementation of PSR-7",
+            "homepage": "https://tnyholm.se",
+            "keywords": [
+                "psr-17",
+                "psr-7"
+            ],
+            "support": {
+                "issues": "https://github.com/Nyholm/psr7/issues",
+                "source": "https://github.com/Nyholm/psr7/tree/1.8.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Zegnat",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nyholm",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-09T07:06:30+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -4930,16 +5129,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v7.4.20",
+            "version": "v7.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "750a420b8dd0af3d6e1c6c1412802abf2cdd2b6c"
+                "reference": "9dd7ba9dc326b37d7f6e19588de79b5d91b20d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/750a420b8dd0af3d6e1c6c1412802abf2cdd2b6c",
-                "reference": "750a420b8dd0af3d6e1c6c1412802abf2cdd2b6c",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/9dd7ba9dc326b37d7f6e19588de79b5d91b20d66",
+                "reference": "9dd7ba9dc326b37d7f6e19588de79b5d91b20d66",
                 "shasum": ""
             },
             "require": {
@@ -5007,7 +5206,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v7.4.20"
+                "source": "https://github.com/symfony/http-client/tree/v7.4.22"
             },
             "funding": [
                 {
@@ -5027,7 +5226,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-24T11:02:13+00:00"
+            "time": "2026-10-26T21:52:50+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
