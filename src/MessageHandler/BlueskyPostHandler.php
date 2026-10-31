@@ -12,15 +12,17 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 class BlueskyPostHandler
 {
     public function __construct(
-        private VideoRepository $videos,
-        private UserRepository $users,
-    ) {}
+        private readonly VideoRepository $videos,
+        private readonly UserRepository $users,
+        private readonly BlueskyService $bluesky,
+    ) {
+    }
 
     public function __invoke(BlueskyPost $message): void
     {
         $video = $this->videos->find($message->getVideoId());
-        $user = $this->users->findOneBy(["email" => $message->getUserId()]);
+        $user = $this->users->findOneBy(['email' => $message->getUserId()]);
 
-        new BlueskyService()->publish($video, $user->getUsername());
+        $this->bluesky->publishToBluesky($video, $user->getUsername());
     }
 }

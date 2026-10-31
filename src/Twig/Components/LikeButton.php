@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Twig\Components;
 
-use App\Message\BlueskyPost;
-use App\Services\BlueskyService;
-use DateTimeImmutable;
 use App\Entity\Video;
+use App\Message\BlueskyPost;
+use App\Message\TelegramPost;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -13,7 +14,6 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
-use function PHPUnit\Framework\isNull;
 
 #[AsLiveComponent]
 class LikeButton
@@ -31,9 +31,9 @@ class LikeButton
 
     public function __construct(
         private Security $security,
-        private BlueskyService $bsky,
         private MessageBusInterface $bus,
-    ) {}
+    ) {
+    }
 
     #[ExposeInTemplate]
     public function likeClass(): ?string
@@ -42,7 +42,7 @@ class LikeButton
 
         $likes = $this->video->getLikes();
 
-        $this->likers = "";
+        $this->likers = '';
         foreach ($likes as $like) {
             $this->likers = $this->likers . $like->getUsername() . "\n";
         }
@@ -75,6 +75,13 @@ class LikeButton
                 ) {
                     $this->bus->dispatch(
                         new BlueskyPost(
+                            $this->video->getId(),
+                            $user->getUserIdentifier(),
+                        ),
+                    );
+
+                    $this->bus->dispatch(
+                        new TelegramPost(
                             $this->video->getId(),
                             $user->getUserIdentifier(),
                         ),
