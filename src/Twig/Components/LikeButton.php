@@ -4,6 +4,7 @@ namespace App\Twig\Components;
 
 use App\Entity\Video;
 use App\Message\BlueskyPost;
+use App\Message\MastodonPost;
 use App\Message\TelegramPost;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -82,6 +83,13 @@ class LikeButton
 
                     $this->bus->dispatch(
                         new TelegramPost(
+                            $this->video->getId(),
+                            $user->getUserIdentifier(),
+                        ),
+                    );
+
+                    $this->bus->dispatch(
+                        new MastodonPost(
                             $this->video->getId(),
                             $user->getUserIdentifier(),
                         ),
