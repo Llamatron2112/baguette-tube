@@ -40,9 +40,9 @@
         <div class="navbar">
             <div class="navigation">
                 <ul>
-                    <a href="{{ path('app_content_recommended') }}"><li>Dernières recommandations</li></a>
-                    <a href="{{ path('app_content_most') }}"><li>Plus recommandées</li></a>
-                    <a href="{{ path('app_content_latest') }}"><li>Actualités</li></a>
+                    <a href="{{ path('app_content_recommended') }}"><li>Recos</li></a>
+                    <a href="{{ path('app_content_most') }}"><li>+ Recos</li></a>
+                    <a href="{{ path('app_content_latest') }}"><li>Actus</li></a>
                     <a href="{{ path('app_content_channels') }}"><li>Chaînes</li></a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path('admin_user_index') }}"><li>Admin</li></a>
