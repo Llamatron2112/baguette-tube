@@ -83,7 +83,38 @@ final class ContentController extends AbstractController
         );
 
         return $this->render("content/videos-list.html.twig", [
-            "title" => "Toutes les vidéos",
+            "title" => "Dernières recommandations",
+            "pagination" => $pagination,
+        ]);
+    }
+
+    #[Route("/most", name: "app_content_most", methods: ["GET"])]
+    public function most(
+        Request $request,
+        VideoRepository $repository,
+        PaginatorInterface $paginator,
+    ): Response {
+        $qb = $repository->createQueryBuilder("v")
+            ->leftJoin('v.likes', 'l')
+            ->addSelect('COUNT(l.id) AS HIDDEN likesCount')
+            ->groupBy('v.id')
+            ->orderBy("likesCount", "DESC");
+
+        if ($search = $request->query->get("q")) {
+            $qb->andWhere("v.title LIKE :q")->setParameter(
+                "q",
+                "%" . $search . "%",
+            );
+        }
+
+        $pagination = $paginator->paginate(
+            $qb,
+            $request->query->getInt("page", 1),
+            12,
+        );
+
+        return $this->render("content/videos-list.html.twig", [
+            "title" => "Les plus recommandés",
             "pagination" => $pagination,
         ]);
     }
@@ -117,7 +148,7 @@ final class ContentController extends AbstractController
         );
 
         return $this->render("content/videos-list.html.twig", [
-            "title" => "Vidéos recommandées",
+            "title" => "Dernières recommandations",
             "pagination" => $pagination,
         ]);
     }
@@ -129,12 +160,4 @@ final class ContentController extends AbstractController
             "video" => $video,
         ]);
     }
-
-    // #[Route(path: "/user/{id}", name: "app_content_user", methods: ["GET"])]
-    // public function user(User $user): Response
-    // {
-    //     return $this->render("content/user.html.twig", [
-    //         "user" => $user,
-    //     ]);
-    // }
 }

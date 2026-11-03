@@ -12,31 +12,55 @@ a {
 }
 
 header.site-header {
-    max-height: 360px;
+    max-height: 360px;      /* plafond : au-delà, l'image est rognée */
     position: relative;
     overflow: clip;
 }
 
-header.site-header > img {
+/* L'image remplit toujours la largeur et garde son ratio ; quand elle est
+   plus haute que le header, le débordement est rogné par overflow: clip. */
+header.site-header > a {
+    display: block;         /* évite l'espace fantôme dû au <a> inline */
+}
+
+header.site-header > a > img {
+    display: block;
     width: 100%;
+    height: auto;
     margin: 0;
 }
 
-header.site-header > div {
+/* Couche de contenu : épouse la hauteur du header (donc 360px max) */
+header.site-header > div.site-name {
     position: absolute;
-    top: 0px;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     text-align: right;
-    width: 100%;
+    padding: 0.25rem 0.5rem;
+    box-sizing: border-box;
+    pointer-events: none;
 }
 
-header.site-header > div > p {
-    margin: auto;
+header.site-header > div.site-name > p,
+header.site-header > div.site-name > h1 {
+    margin: 0;
 }
 
-header.site-header > div > h1 {
-    margin: auto;
+/* .socials est enfant de .site-name : plaqué en bas du header */
+header.site-header .socials {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+    pointer-events: auto;
 }
 
+header.site-header .socials img {
+    display: block;
+    height: 28px;           /* ajuste selon tes PNG */
+    width: auto;
+}
 
 div.navbar {
     display: flex;

@@ -21,20 +21,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <a href="/">
             <header class="site-header">
+                <a href="/">
                     <img src="/images/banner_bt.jpg">
-                    <div>
-                        <p><b>Le Baguette tube</b></p>
-                        <p>Recommande et suit des chaînes de</p>
-                        <h1>Vidéos politiques francophones</h1>
+                </a>
+                <div class="site-name">
+                    <p><b>Le Baguette tube</b></p>
+                    <p>Recommande et suit des chaînes de</p>
+                    <h1>Vidéos politiques francophones</h1>
+                    <div class="socials">
+                        <a href="https://t.me/+fJ32OY92SqRhNzQ0" target="_blank"><img src="/images/socials/telegram.png"></a>
+                        <a href="https://discord.gg/yUeqKQZGgH" target="_blank"><img src="/images/socials/discord.png"></a>
+                        <a href="https://mastodon.social/@BaguetteTube" target="_blank"><img src="/images/socials/mastodon.png"></a>
+                        <a href="https://bsky.app/profile/baguettetube.bsky.social" target="_blank"><img src="/images/socials/bluesky.png"></a>
                     </div>
+                </div>
             </header>
-        </a>
         <div class="navbar">
             <div class="navigation">
                 <ul>
-                    <a href="{{ path('app_content_recommended') }}"><li>Recommandés</li></a>
+                    <a href="{{ path('app_content_recommended') }}"><li>Dernières recommandations</li></a>
+                    <a href="{{ path('app_content_most') }}"><li>Plus recommandées</li></a>
                     <a href="{{ path('app_content_latest') }}"><li>Actualités</li></a>
                     <a href="{{ path('app_content_channels') }}"><li>Chaînes</li></a>
                     {% if is_granted('ROLE_ADMIN') %}
