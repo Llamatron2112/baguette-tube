@@ -49,14 +49,14 @@ header.site-header > div.site-name > h1 {
 }
 
 /* .socials est enfant de .site-name : plaqué en bas du header */
-header.site-header .socials {
-    margin-top: auto;
+div.socials {
+    margin-top: 0.5rem;
     display: flex;
     gap: 0.5rem;
-    pointer-events: auto;
+    justify-content: center;
 }
 
-header.site-header .socials img {
+div.socials img {
     display: block;
     height: 28px;           /* ajuste selon tes PNG */
     width: auto;
