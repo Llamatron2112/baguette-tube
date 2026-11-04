@@ -83,7 +83,7 @@ final class ContentController extends AbstractController
         );
 
         return $this->render("content/videos-list.html.twig", [
-            "title" => "Dernières recommandations",
+            "title" => "Dernières vidéos des chaînes suivies",
             "pagination" => $pagination,
         ]);
     }
