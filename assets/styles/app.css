@@ -1,6 +1,37 @@
+@font-face {
+	font-family: 'Avenir Next';
+	font-weight: 400;
+	src: url('/fonts/Avenir Next Regular.woff2') format('woff2');
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	font-weight: 400;
+	src: url('/fonts/Avenir Next Italic.woff2') format('woff2');
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	font-weight: 700;
+	src: url('/fonts/Avenir Next Bold.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir Next';
+	font-weight: 700;
+	src: url('/fonts/Avenir Next Bold Italic.woff2') format('woff2');
+	font-style: italic;
+	font-display: swap;
+}
+
 body {
     background-color: #e7c591;
-    font-family: sans;
+    font-family: 'Avenir Next', sans-serif;
     font-size: 0.9rem;
     display: flex;
     flex-direction: column;
@@ -12,15 +43,13 @@ a {
 }
 
 header.site-header {
-    max-height: 360px;      /* plafond : au-delà, l'image est rognée */
+    max-height: 360px;
     position: relative;
     overflow: clip;
 }
 
-/* L'image remplit toujours la largeur et garde son ratio ; quand elle est
-   plus haute que le header, le débordement est rogné par overflow: clip. */
 header.site-header > a {
-    display: block;         /* évite l'espace fantôme dû au <a> inline */
+    display: block;
 }
 
 header.site-header > a > img {
@@ -30,7 +59,6 @@ header.site-header > a > img {
     margin: 0;
 }
 
-/* Couche de contenu : épouse la hauteur du header (donc 360px max) */
 header.site-header > div.site-name {
     position: absolute;
     inset: 0;
@@ -48,7 +76,6 @@ header.site-header > div.site-name > h1 {
     margin: 0;
 }
 
-/* .socials est enfant de .site-name : plaqué en bas du header */
 div.socials {
     margin-top: 0.5rem;
     display: flex;
