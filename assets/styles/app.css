@@ -71,6 +71,13 @@ header.site-header > div.site-name {
     pointer-events: none;
 }
 
+@media screen and (max-width: 768px) {
+    header.site-header > div.site-name {
+        font-size: 0.7rem;
+    }
+}
+
+
 header.site-header > div.site-name > p,
 header.site-header > div.site-name > h1 {
     margin: 0;
@@ -184,7 +191,6 @@ div.video-card {
     border: black solid 1px;
     background-color: white;
     border-radius: 10px;
-    /*margin: 5px;*/
     text-align: left;
 }
 
