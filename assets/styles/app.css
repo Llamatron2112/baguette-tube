@@ -69,31 +69,12 @@ header.site-header > div.site-name {
     padding: 0.25rem 0.5rem;
     box-sizing: border-box;
     pointer-events: none;
+    font-size: clamp(0.5rem, 1vw + 0.5rem, 2rem);
 }
-
-@media screen and (max-width: 768px) {
-    header.site-header > div.site-name {
-        font-size: 0.7rem;
-    }
-}
-
 
 header.site-header > div.site-name > p,
 header.site-header > div.site-name > h1 {
     margin: 0;
-}
-
-div.socials {
-    margin-top: 0.5rem;
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-}
-
-div.socials img {
-    display: block;
-    height: 28px;           /* ajuste selon tes PNG */
-    width: auto;
 }
 
 div.navbar {
@@ -130,6 +111,19 @@ div.navbar>div.session>ul li {
 
 div.navbar>div>ul li:hover {
     background-color: white;
+}
+
+div.socials {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+div.socials img {
+    display: block;
+    height: 28px;
+    width: auto;
 }
 
 div.main-content {
