@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Email vérifié{% endblock %}
+
+{% block body %}
+<p>Votre email a bien été validé</p>
+<p>Vous pouvez maintenant vous connecter pour pouvoir recommander des vidéos</p>
+<p><a href="{{ path('app_login') }}">Connexion</a>.</p>
+{% endblock %}
