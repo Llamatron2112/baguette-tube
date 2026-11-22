@@ -61,7 +61,7 @@ final class ContentController extends AbstractController
         ]);
     }
 
-    #[Route("/latest", name: "app_content_latest", methods: ["GET"])]
+    #[Route("/", name: "app_content_latest", methods: ["GET"])]
     public function index(
         Request $request,
         VideoRepository $repository,
@@ -119,7 +119,7 @@ final class ContentController extends AbstractController
         ]);
     }
 
-    #[Route("/", name: "app_content_recommended", methods: ["GET"])]
+    #[Route("/recommended", name: "app_content_recommended", methods: ["GET"])]
     public function recommended(
         VideoRepository $repository,
         EntityManagerInterface $entityManager,
