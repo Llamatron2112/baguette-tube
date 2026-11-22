@@ -45,7 +45,8 @@ a {
 header.site-header {
     max-height: 360px;
     position: relative;
-    overflow: clip;
+    /*overflow: clip;*/
+    background-color: #f9e0a6;
 }
 
 header.site-header > a {
@@ -54,7 +55,8 @@ header.site-header > a {
 
 header.site-header > a > img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    max-height: 360px;
     height: auto;
     margin: 0;
 }
