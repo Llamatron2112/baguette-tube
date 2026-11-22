@@ -34,18 +34,18 @@
         <div class="navbar">
             <div class="navigation">
                 <ul>
-                    <a href="{{ path('app_content_recommended') }}"><li>Recos</li></a>
-                    <a href="{{ path('app_content_most') }}"><li>+ Recos</li></a>
                     <a href="{{ path('app_content_latest') }}"><li>Actus</li></a>
                     <a href="{{ path('app_content_channels') }}"><li>Chaînes</li></a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('admin_user_index') }}"><li>Admin</li></a>
-                    {% endif %}
+                    <a href="{{ path('app_content_recommended') }}"><li>&#x2665;</li></a>
+                    <a href="{{ path('app_content_most') }}"><li>&#x2661;</li></a>
                 </ul>
             </div>
             <div class="session">
                 <ul>
                 {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_user_index') }}"><li>Admin</li></a>
+                    {% endif %}
                     <li><a href="{{ path('app_logout') }}">{{ app.user.username }} (Logout)</a></li>
                 {% else %}
                     <li><a href="{{ path('app_login') }}">Pour recommander</a></li>
