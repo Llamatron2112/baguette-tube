@@ -99,11 +99,19 @@ div.navbar ul {
 div.navbar>div>ul li {
     background-color: #f8dfa9;
     padding: 0.1rem 0.2rem;
+    display: flex;
+    align-items: center;
 }
 
-div.navbar>div.navigation>ul li {
-    margin-left: 0rem;
-    margin-right: 0.5rem;
+div.navbar>div>ul li > a {
+    display: flex;
+    align-items: center;
+}
+
+div.navbar>div>ul img {
+    display: block;
+    height: 1.7rem;
+    width: auto;
 }
 
 div.navbar>div.session>ul li {
